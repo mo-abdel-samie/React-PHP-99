@@ -1,20 +1,17 @@
 import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
-import "./main.css"
-import Home from "./pages/Home";
-import About from "./pages/About";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Error404 from "./pages/Error404";
+import "./main.css";
+import { BrowserRouter, Routes } from "react-router-dom";
+import rootRoute from "./routes/rootRoute";
+import useRoute from "./routes/useRoute";
 
 export default function App() {
+  const RouterBuilder = useRoute();
+
   return (
     <MantineProvider>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="*" element={<Error404 />} />
-        </Routes>
+        <Routes>{rootRoute(RouterBuilder)}</Routes>
       </BrowserRouter>
     </MantineProvider>
   );
