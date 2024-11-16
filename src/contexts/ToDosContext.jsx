@@ -2,6 +2,8 @@ import { createContext, useContext, useState } from "react";
 
 const ToDosContext = createContext({
   tasks: [],
+  newTaskTitle: "",
+  setNewTaskTitle: () => {},
   addTask: () => {},
   updateTask: () => {},
   removeTask: () => {},
@@ -27,8 +29,8 @@ export const ToDosProvider = ({ children }) => {
     <ToDosContext.Provider
       value={{
         tasks,
-        setNewTaskTitle,
         newTaskTitle,
+        setNewTaskTitle,
         addTask,
         updateTask,
         removeTask,
